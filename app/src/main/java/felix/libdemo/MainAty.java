@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import felix.felixlib.Base.BaseAty;
+import felix.felixlib.Base.adp.AdpFactory;
 import felix.felixlib.annotation.BindLayout;
 import felix.felixlib.annotation.BindView;
 import felix.felixlib.annotation.OnClick;
@@ -32,14 +33,8 @@ public class MainAty extends BaseAty {
     protected void initData() {
         super.initData();
         mResolveInfos = new ArrayList<>();
-        mAppAdp = new AppAdp(mContext, mResolveInfos);
+        mAppAdp = AdpFactory.createADP(AppAdp.class, mContext, mResolveInfos);
         mLvApp.setAdapter(mAppAdp);
-//        mTvUpdate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                update();
-//            }
-//        });
         mLvApp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -16,7 +16,9 @@ public class BaseVH<T> {
     protected Context mContext;
     private View mView;
 
-    public BaseVH(Context context, View view) {
+    public BaseVH() {
+    }
+    public void init(Context context, View view) {
         mContext = context;
         mView = view;
         bindView(view);

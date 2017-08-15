@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import felix.felixlib.util.AnnotationUtil;
@@ -16,6 +18,7 @@ import felix.felixlib.util.AnnotationUtil;
  */
 
 public class BaseAdp<T, VH extends BaseVH<T>> extends BaseAdapter {
+    private static final int VH_INDEX = 1;
     protected final String TAG = this.getClass().getSimpleName();
     protected Context mContext;
     protected List<T> mCell;
@@ -24,7 +27,7 @@ public class BaseAdp<T, VH extends BaseVH<T>> extends BaseAdapter {
     public BaseAdp() {
     }
 
-    public BaseAdp(Context context, List<T> cell) {
+    public void init(Context context, List<T> cell) {
         mContext = context;
         mCell = cell;
         mLayoutInflater = LayoutInflater.from(mContext);
@@ -64,9 +67,20 @@ public class BaseAdp<T, VH extends BaseVH<T>> extends BaseAdapter {
         return position;
     }
 
-    protected VH createVH(Context context, View view) {
+    protected VH createVH() {
         Log.i(TAG, "createVH: getVH with Annoattion.");
-        return AnnotationUtil.getTWithADPParame(this, 1, context, view);
+        return AnnotationUtil.getT(this,VH_INDEX);
+    }
+
+    final protected Class<? extends BaseVH> getVHCls() {
+        Type type = this.getClass().getGenericSuperclass();
+        ParameterizedType pt = ((ParameterizedType) type);
+        Type[] types = pt.getActualTypeArguments();
+        if (types == null || types.length <= VH_INDEX) {
+            return null;
+        }
+        return ((Class<? extends BaseVH>) types[VH_INDEX].getClass());
+
     }
 
     /**
@@ -84,7 +98,8 @@ public class BaseAdp<T, VH extends BaseVH<T>> extends BaseAdapter {
         VH vh;
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(getLayoutId(), parent, false);
-            vh = createVH(mContext, convertView);
+            vh = createVH();
+            vh.init(mContext,convertView);
             vh.initData();
             convertView.setTag(vh);
         } else {
