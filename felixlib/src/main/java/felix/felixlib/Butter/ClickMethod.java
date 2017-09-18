@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
  */
 
 public class ClickMethod {
-    private final static String TAG = ClickMethod.class.getSimpleName();
+    private final static String TAG = ClickMethod.class.getName();
     private Method mMethod;
     private boolean mHasParam;
     private int[] mIds;

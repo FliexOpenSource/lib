@@ -1,4 +1,4 @@
-package felix.felixlib.Base.adp;
+package felix.felixlib.Base.adp.eadp;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
@@ -8,16 +8,17 @@ import android.view.View;
 import felix.felixlib.Butter.MyButter;
 
 /**
- * Created by huangmf on 2017/7/29.
+ * Created by huangmf on 8/16/2017.
  */
 
-public class BaseVH<T> {
-    protected final String TAG = this.getClass().getSimpleName();
+public class BaseGVH<T> {
+    protected final String TAG = this.getClass().getName();
     protected Context mContext;
     private View mView;
 
-    public BaseVH() {
+    public BaseGVH() {
     }
+
     public void init(Context context, View view) {
         mContext = context;
         mView = view;

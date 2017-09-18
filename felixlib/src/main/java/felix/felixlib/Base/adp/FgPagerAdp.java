@@ -1,8 +1,7 @@
 package felix.felixlib.Base.adp;
 
+import android.app.FragmentManager;
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import felix.felixlib.Base.BaseFg;
  */
 
 public class FgPagerAdp extends FragmentPagerAdapter {
-    protected final String TAG = this.getClass().getSimpleName();
+    protected final String TAG = this.getClass().getName();
     protected Context mContext;
     private List<BaseFg> mBaseFgs;
 

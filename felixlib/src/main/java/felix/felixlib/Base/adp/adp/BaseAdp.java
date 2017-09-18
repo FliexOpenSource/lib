@@ -1,4 +1,4 @@
-package felix.felixlib.Base.adp;
+package felix.felixlib.Base.adp.adp;
 
 import android.content.Context;
 import android.util.Log;
@@ -19,7 +19,7 @@ import felix.felixlib.util.AnnotationUtil;
 
 public class BaseAdp<T, VH extends BaseVH<T>> extends BaseAdapter {
     private static final int VH_INDEX = 1;
-    protected final String TAG = this.getClass().getSimpleName();
+    protected final String TAG = this.getClass().getName();
     protected Context mContext;
     protected List<T> mCell;
     protected LayoutInflater mLayoutInflater;

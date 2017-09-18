@@ -1,12 +1,12 @@
 package felix.felixlib.Base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,7 +17,7 @@ import felix.felixlib.util.AnnotationUtil;
  * Created by huangmf on 2017/7/29.
  */
 
-public class BaseAty extends Activity {
+public class BaseCompatAty extends AppCompatActivity {
     protected final String TAG = this.getClass().getName();
     protected Context mContext;
 

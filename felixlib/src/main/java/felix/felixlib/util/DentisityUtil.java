@@ -10,7 +10,7 @@ import felix.felixlib.Base.BaseApp;
  */
 
 public class DentisityUtil {
-    private final static String TAG = DentisityUtil.class.getSimpleName();
+    private final static String TAG = DentisityUtil.class.getName();
     private static float sDensity = -1;
     private static float sScaledDensity = -1;
 

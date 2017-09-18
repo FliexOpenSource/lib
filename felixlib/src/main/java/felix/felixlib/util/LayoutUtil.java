@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  */
 
 public class LayoutUtil {
-    private final static String TAG=LayoutUtil.class.getSimpleName();
+    private final static String TAG=LayoutUtil.class.getName();
     private static Context sContext;
     private static SparseArray<View> sViewCaches;
 

@@ -12,15 +12,31 @@ import felix.felixlib.annotation.BindLayout;
  */
 
 public class AnnotationUtil {
-    private static final String TAG = AnnotationUtil.class.getSimpleName();
+    private static final String TAG = AnnotationUtil.class.getName();
 
     public static int getAnnotationLayoutId(Object obj) {
-        BindLayout bindLayout = obj.getClass().getAnnotation(BindLayout.class);
-        if (bindLayout != null) {
-            final int layoutId = bindLayout.value();
-            return layoutId;
+        int[] layoutIds = getAnnotationWithLayout(obj);
+        if (layoutIds != null && layoutIds.length > 0) {
+            return layoutIds[0];
         }
         return -1;
+    }
+
+    public static int[] getAnnotationLayoutIds(Object obj) {
+        int[] layoutIds = getAnnotationWithLayout(obj);
+        if (layoutIds != null && layoutIds.length == 2) {
+            return layoutIds;
+        }
+        return new int[]{-1, -1};
+    }
+
+    private static int[] getAnnotationWithLayout(Object obj) {
+        BindLayout bindLayout = obj.getClass().getAnnotation(BindLayout.class);
+        if (bindLayout != null) {
+            final int[] layoutId = bindLayout.value();
+            return layoutId;
+        }
+        return null;
     }
 
     public static <T> T getT(Object o, int i) {

@@ -1,4 +1,4 @@
-package felix.libdemo;
+package felix.libdemo.View;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -13,15 +13,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import felix.felixlib.Base.BaseAty;
+import felix.felixlib.Base.BaseFg;
 import felix.felixlib.Base.adp.AdpFactory;
 import felix.felixlib.annotation.BindLayout;
 import felix.felixlib.annotation.BindView;
 import felix.felixlib.annotation.OnClick;
 import felix.felixlib.util.ToastUtil;
+import felix.libdemo.Adp.AppAdp;
+import felix.libdemo.R;
 
-@BindLayout(R.layout.aty_main)
-public class MainAty extends BaseAty {
+/**
+ * Created by huangmf on 8/16/2017.
+ */
+@BindLayout(R.layout.fg_main)
+public class AppFg extends BaseFg {
     @BindView(R.id.tv_update)
     TextView mTvUpdate;
     @BindView(R.id.lv_app)
@@ -30,8 +35,8 @@ public class MainAty extends BaseAty {
     private AppAdp mAppAdp;
 
     @Override
-    protected void initData() {
-        super.initData();
+    protected void initData(View view) {
+        super.initData(view);
         mResolveInfos = new ArrayList<>();
         mAppAdp = AdpFactory.createADP(AppAdp.class, mContext, mResolveInfos);
         mLvApp.setAdapter(mAppAdp);
@@ -57,7 +62,7 @@ public class MainAty extends BaseAty {
         String time = sdf.format(new Date());
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> resolveInfos = getPackageManager().queryIntentActivities(intent, 0);
+        List<ResolveInfo> resolveInfos = mContext.getPackageManager().queryIntentActivities(intent, 0);
         mResolveInfos.clear();
         mResolveInfos.addAll(resolveInfos);
         mAppAdp.notifyDataSetChanged();

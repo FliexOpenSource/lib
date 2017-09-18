@@ -11,7 +11,7 @@ import felix.felixlib.Base.BaseApp;
  */
 
 public class SPUtil {
-    private final static String TAG = SPUtil.class.getSimpleName();
+    private final static String TAG = SPUtil.class.getName();
     private static Context sContext;
     private static SharedPreferences sp;
     private static SharedPreferences.Editor editor;

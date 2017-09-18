@@ -1,19 +1,20 @@
-package felix.libdemo;
+package felix.libdemo.Adp;
 
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import felix.felixlib.Base.adp.BaseAdp;
-import felix.felixlib.Base.adp.BaseVH;
+import felix.felixlib.Base.adp.adp.BaseAdp;
+import felix.felixlib.Base.adp.adp.BaseVH;
 import felix.felixlib.annotation.BindLayout;
 import felix.felixlib.annotation.BindView;
+import felix.libdemo.R;
 
 /**
  * Created by huangmf on 2017/7/29.
  */
-@BindLayout(R.layout.app_item)
+@BindLayout(R.layout.adp_itm_app)
 public class AppAdp extends BaseAdp<ResolveInfo, AppAdp.AppVH> {
     public class AppVH extends BaseVH<ResolveInfo> {
         @BindView(R.id.iv_icon)
